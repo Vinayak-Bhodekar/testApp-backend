@@ -13,7 +13,6 @@ import { registerUser,
 
 import { upload } from "../middlewares/multer.middlewares.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
-import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
 const router = Router();
 
