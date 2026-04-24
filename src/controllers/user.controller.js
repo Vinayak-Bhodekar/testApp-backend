@@ -27,15 +27,13 @@ const generateAccessAndRefreshToken = async (userId) => {
 const registerUser = asyncHandler(async (req,res) => {
   console.log("TYPE:", req.headers["content-type"]);
   console.log("BODY:", req.body);
-  const {fullName,email,username,password} = req.body;
+  const {fullName,email,password} = req.body;
 
-  if([fullName,email,username,password].some((field) => {field?.trim() === ""})) {
+  if([fullName,email,password].some((field) => {field?.trim() === ""})) {
     throw new ApiError(400,"All fields are required")
   }
 
-  const existedUser = await User.findOne({
-    $or:[{userName:username},{email:email}]
-  })
+  const existedUser = await User.findOne({email:email})
   if(existedUser) {
     throw new ApiError(409,"User with username and email already exist")
   }
@@ -45,7 +43,6 @@ const registerUser = asyncHandler(async (req,res) => {
       fullName,
       email,
       password,
-      username:username.toLowerCase()
 
     })
   
