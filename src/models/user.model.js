@@ -10,14 +10,6 @@ const {Schema} = pkg;
 
 const userSchema = new Schema(
   {
-    username: {
-      type: String,
-      required: true,
-      lowercase: true,
-      unique: true,
-      trim: true,
-      index: true
-    },
     role: {
       type: String,
       enum: ['admin','student'],
