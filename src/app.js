@@ -33,15 +33,11 @@ import commentRouter from "./routes/comment.routes.js"
 
 app.use("/api/v1/healthcheck", healthCheckRouter)
 app.use("/api/v1/users", userRouter)
-app.use("/api/v1/Video", videoRouter)
-app.use("/api/v1/Tweets", tweetRouter)
-app.use("/api/v1/Subscription", subscriptionRouter)
-app.use("/api/v1/Playlist", playlistRouter)
-app.use("/api/v1/Like", likeRouter)
-app.use("/api/v1/Dashboard", dashboardRouter)
-app.use("/api/v1/Comment", commentRouter)
-
-
+app.use("/api/v1/tests", testRoutes);
+app.use("/api/v1/questions", questionRoutes);
+app.use("/api/v1/attempts", attemptRoutes);
+app.use("/api/v1/answers", attemptRoutes);
+app.use("/api/v1/options", attemptRoutes);
 app.use(errorHandler)
 
 export {app};
