@@ -43,7 +43,6 @@ const registerUser = asyncHandler(async (req,res) => {
       fullName,
       email,
       password,
-
     })
   
     const createdUser = await User.findById(user._id).select("-password -refreshToken")
@@ -64,11 +63,9 @@ const registerUser = asyncHandler(async (req,res) => {
 })
 
 const loginUser = asyncHandler(async (req,res) => {
-  const {email,username,password} = req.body
+  const {email,password} = req.body
   
-  const user = await User.findOne({
-    $or:[{username:username},{email:email}]
-  })
+  const user = await User.findOne({email:email})
 
 
   if(!user) {
